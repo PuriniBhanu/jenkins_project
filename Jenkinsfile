@@ -14,12 +14,13 @@ pipeline {
     always {
         emailext(
             to: 'bhanusivaprakashreddy1997@gmail.com',
-            subject: "Build Result: ${currentBuild.currentResult}",
-            body: """<pre>
+            subject: "Job: ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+            mimeType: 'text/html',
+            body: '''<h3>Build Result: ${currentBuild.currentResult}</h3>
+<pre>
 ${BUILD_LOG, maxLines=-1}
-</pre>"""
+</pre>'''
         )
     }
-
 }
 }
