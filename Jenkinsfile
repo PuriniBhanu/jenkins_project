@@ -11,15 +11,15 @@ pipeline {
     }
 
     post {
-        always {
-            emailext (
-                to: 'bhanusivaprakashreddy1997@gmail.com',
-                subject: "Jenkins Build Result: ${currentBuild.currentResult}",
-                body: """<pre>
-    ${BUILD_LOG, maxLines=-1}
-    </pre>"""
-            )
-        }
+    always {
+        emailext(
+            to: 'bhanusivaprakashreddy1997@gmail.com',
+            subject: "Build Result: ${currentBuild.currentResult}",
+            body: """<pre>
+${BUILD_LOG, maxLines=-1}
+</pre>"""
+        )
     }
-}
 
+}
+}
