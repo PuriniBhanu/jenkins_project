@@ -15,7 +15,9 @@ pipeline {
             emailext (
                 to: 'bhanusivaprakashreddy1997@gmail.com',
                 subject: "Jenkins Build Result: ${currentBuild.currentResult}",
-                body: "Build completed.\nCheck Jenkins console for full logs."
+                body: """<pre>
+    ${BUILD_LOG, maxLines=-1}
+    </pre>"""
             )
         }
     }
